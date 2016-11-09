@@ -1,0 +1,70 @@
+// theme
+
+	$themes : (
+		
+		// primary
+
+			light : (
+				background: 			$white,
+				background-hover: 		$black,
+				color: 					$primary-text-light,
+				color-hover: 			$primary-text-dark,
+				color-icon: 			$secondary-text-light,
+				border: 				$dividers-light,
+			),
+
+			dark : (
+				background: 			$black,
+				background-hover: 		$white,
+				color: 					$primary-text-dark,
+				color-hover: 			$primary-text-light,
+				color-icon: 			$secondary-text-dark,
+				border: 				$dividers-dark,
+			)
+
+	);
+
+	@each $name, $attr in $themes {
+		[class*="--#{$name}"] {
+			
+			@if map-get($attr, background) { background-color: map-get($attr, background) }
+			@if map-get($attr, color) { color: map-get($attr, color) }
+			@if map-get($attr, border) { border-color: map-get($attr, border) }
+			
+			& > i {
+				@if map-get($attr, color-icon) { color: map-get($attr, color-icon) }
+			}
+
+			&:before {
+				@if map-get($attr, background-hover) { background-color: map-get($attr, background-hover) }
+				@elseif map-get($attr, background) { background-color: map-get($attr, background) }
+			}
+
+		}
+
+		a,
+		button,
+		input,
+		textarea {
+			&[class*="--#{$name}"] {
+				.active > &,
+				&.active,
+				&:active,
+				&:hover,
+				&:focus {
+					// @if map-get($attr, background-hover) { background-color: map-get($attr, background-hover) }
+					// @elseif map-get($attr, background) { background-color: map-get($attr, background) }
+
+					@if map-get($attr, color-hover) { color: map-get($attr, color-hover) }
+					@elseif map-get($attr, color) { color: map-get($attr, color) }
+
+					@if map-get($attr, border-hover) { border-color: map-get($attr, border-hover) }
+					@elseif map-get($attr, border) { border-color: map-get($attr, border) }
+				}
+			}
+		}
+
+		input[class*="--#{$name}"] {
+			@if map-get($attr, color) { @include color-placeholder( map-get($attr, color) ) }
+		}
+	}

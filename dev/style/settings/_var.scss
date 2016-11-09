@@ -1,0 +1,69 @@
+// Index.
+	$zindex:						1;
+	$zindex-app_viewport:			10;
+	$zindex-app_page:				10;
+	$zindex-app_modal:				15;
+	$zindex-app_topbar:				20;
+	$zindex-app_overlaye:			30;
+	$zindex-app_panel:				40;
+
+
+// Rwd.
+		
+	$screen-xs: 					320px;
+	$screen-sm: 					480px;
+	$screen-md: 					768px;
+	$screen-lg: 					1024px;
+
+
+// Font.
+	$font-primary: 					"Source Sans Pro", helvetica, sans-serif;
+	$font-secondary:				"Nexa";
+	$font-path:						'../fonts/';
+
+
+// Color.
+
+	// Base
+	$black:							#000000;
+	$white:							#ffffff;
+	
+	// Dark backgrounds
+	$primary-text-dark:				$white;
+	$secondary-text-dark:			lighten($white, 25%);
+	$disabled-hint-text-dark:		lighten($white, 50%);
+	$dividers-dark:					lighten($white, 85%);
+
+	// Light backgrounds
+	$primary-text-light:			lighten($black, 25%);
+	$secondary-text-light:			lighten($black, 50%);
+	$disabled-hint-text-light: 		lighten($black, 75%);
+	$dividers-light:				lighten($black, 85%);
+	
+	// Default 500 palette
+	$red:							#FF4747;
+	$pink:							#FF4799;
+	$purple:						#BB47FF;
+	$deep-purple:					#7947FF;
+	$indigo:						#4752FF;
+	$blue:							#4793FF;
+	$light-blue:					#47CAFF;
+	$cyan:							#47E7FF;
+	$teal:							#009BAE;
+	$green:							#4EC36E;
+	$light-green:					#7AC34E;
+	$lime:							#BBC235;
+	$yellow:						#FFE847;
+	$amber:							#FFCF47;
+	$orange:						#FFAE47;
+	$deep-orange:					#FF8247;
+	$brown:							#A09090;
+	$deep-brown:					#695050;
+	$grey:							#9E9E9E;
+	$blue-grey:						#9EB0C3;
+	
+	// Social medias
+	$facebook:						#395b98;
+	$twitter:						#26abe4;
+	$google:						#D84B37;
+

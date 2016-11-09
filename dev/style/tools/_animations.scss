@@ -1,0 +1,12 @@
+
+// loading-circle
+
+	@include vendor-keyframes ( "loading-circle" ) {
+		0% {
+			@include vendor-property(
+				transform, rotate(0deg));
+		} 100% {
+			@include vendor-property(
+				transform, rotate(360deg));
+		}
+	}

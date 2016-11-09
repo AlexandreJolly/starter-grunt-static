@@ -1,0 +1,94 @@
+html, body {
+	position: relative;
+	z-index: $zindex;
+	margin: 0;
+	padding: 0;
+	font-size: 16px, 1em;
+	font-family: $font-primary;
+}
+
+*, button, input, select, textarea, canvas {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+figure {
+	margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, label, blockquote, span, strong, u, b {
+	@include fontRegular;
+}
+
+span, strong, u, b {
+	font-weight: inherit;
+}
+
+strong, b {
+	@include fontBold;
+}
+
+i:not(.ico) {
+	font-style: italic;
+}
+
+label {
+	@include fontRegular;
+	display: inline-block;
+	margin: 0;
+	margin-left: $gutter;
+	margin-bottom: $gutter/2;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $font-secondary;
+	@include fontBold;
+	
+	& {
+		margin: 0.4em 0;
+	}
+}
+
+h1 { font-size: 1.8em }
+h2 { font-size: 1.6em }
+h3 { font-size: 1.4em }
+h4 { font-size: 1.2em }
+h5 { font-size: 1em }
+h6 { font-size: 0.8em }
+
+p {
+	@include fontRegular;
+}
+
+p,
+p:first-child,
+p:last-child {
+	line-height: 1.4em;
+	margin: 0 0 $gutter 0;
+}
+
+p:last-child {
+	margin: 0;
+}
+
+p b,
+p strong {
+	@include fontRegular;
+}
+
+p > .ico {
+	vertical-align: baseline;
+}
+
+a {
+	text-decoration: none !important;
+	color: $black;
+	@include fontBold;
+}
+
+a:hover,
+a:focus,
+a:active {
+	color: inherit;
+}

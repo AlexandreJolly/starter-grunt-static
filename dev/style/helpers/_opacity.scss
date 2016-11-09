@@ -1,0 +1,9 @@
+$opacity: 100;
+$opacity-step: 5;
+
+@while $opacity > 0 {
+	.op-#{$opacity} {
+		opacity: $opacity / 100;
+	}
+	$opacity: $opacity - $opacity-step;
+}

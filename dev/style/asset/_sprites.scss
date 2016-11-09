@@ -1,0 +1,129 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet: width height image $spritesheet-sprites;
+*/
+$sprite-cc-cb-name: 'sprite-cc-cb';
+$sprite-cc-cb-x: 0px;
+$sprite-cc-cb-y: 0px;
+$sprite-cc-cb-offset-x: 0px;
+$sprite-cc-cb-offset-y: 0px;
+$sprite-cc-cb-width: 100px;
+$sprite-cc-cb-height: 100px;
+$sprite-cc-cb-total-width: 208px;
+$sprite-cc-cb-total-height: 208px;
+$sprite-cc-cb-image: '../sprites/sprites.png';
+$sprite-cc-cb: (0px, 0px, 0px, 0px, 100px, 100px, 208px, 208px, '../sprites/sprites.png', 'sprite-cc-cb', );
+$sprite-cc-mastercard-name: 'sprite-cc-mastercard';
+$sprite-cc-mastercard-x: 108px;
+$sprite-cc-mastercard-y: 0px;
+$sprite-cc-mastercard-offset-x: -108px;
+$sprite-cc-mastercard-offset-y: 0px;
+$sprite-cc-mastercard-width: 100px;
+$sprite-cc-mastercard-height: 100px;
+$sprite-cc-mastercard-total-width: 208px;
+$sprite-cc-mastercard-total-height: 208px;
+$sprite-cc-mastercard-image: '../sprites/sprites.png';
+$sprite-cc-mastercard: (108px, 0px, -108px, 0px, 100px, 100px, 208px, 208px, '../sprites/sprites.png', 'sprite-cc-mastercard', );
+$sprite-cc-paypal-name: 'sprite-cc-paypal';
+$sprite-cc-paypal-x: 0px;
+$sprite-cc-paypal-y: 108px;
+$sprite-cc-paypal-offset-x: 0px;
+$sprite-cc-paypal-offset-y: -108px;
+$sprite-cc-paypal-width: 100px;
+$sprite-cc-paypal-height: 100px;
+$sprite-cc-paypal-total-width: 208px;
+$sprite-cc-paypal-total-height: 208px;
+$sprite-cc-paypal-image: '../sprites/sprites.png';
+$sprite-cc-paypal: (0px, 108px, 0px, -108px, 100px, 100px, 208px, 208px, '../sprites/sprites.png', 'sprite-cc-paypal', );
+$sprite-cc-visa-name: 'sprite-cc-visa';
+$sprite-cc-visa-x: 108px;
+$sprite-cc-visa-y: 108px;
+$sprite-cc-visa-offset-x: -108px;
+$sprite-cc-visa-offset-y: -108px;
+$sprite-cc-visa-width: 100px;
+$sprite-cc-visa-height: 100px;
+$sprite-cc-visa-total-width: 208px;
+$sprite-cc-visa-total-height: 208px;
+$sprite-cc-visa-image: '../sprites/sprites.png';
+$sprite-cc-visa: (108px, 108px, -108px, -108px, 100px, 100px, 208px, 208px, '../sprites/sprites.png', 'sprite-cc-visa', );
+$spritesheet-width: 208px;
+$spritesheet-height: 208px;
+$spritesheet-image: '../sprites/sprites.png';
+$spritesheet-sprites: ($sprite-cc-cb, $sprite-cc-mastercard, $sprite-cc-paypal, $sprite-cc-visa, );
+$spritesheet: (208px, 208px, '../sprites/sprites.png', $spritesheet-sprites, );
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of SCSS
+
+@include sprites($spritesheet-sprites);
+*/
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

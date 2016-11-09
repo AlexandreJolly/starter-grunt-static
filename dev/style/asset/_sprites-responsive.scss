@@ -1,0 +1,40 @@
+$spt-padding: 8;
+
+@mixin sprite-position($sprite) {
+
+	$spt-width : 		(nth($sprite, 5) + $spt-padding) / 1px;
+	$spt-height : 		(nth($sprite, 6) + $spt-padding) / 1px;
+	$spt-width-total : 	(nth($sprite, 7) + $spt-padding) / 1px;
+	$spt-height-total : (nth($sprite, 8) + $spt-padding) / 1px;
+	$spt-offset-x : 	nth($sprite, 1) / 1px;
+	$spt-offset-y : 	nth($sprite, 2) / 1px;
+
+	$spt-column : 		$spt-width-total / $spt-width;
+	$spt-row : 			$spt-height-total / $spt-height;
+
+	$spt-offset-x-p : 	( $spt-offset-x / $spt-width ) * 100 / ( $spt-column - 1);
+	$spt-offset-y-p : 	( $spt-offset-y / $spt-height ) * 100 / ( $spt-row - 1);
+
+	background-position: #{$spt-offset-x-p+"%"} #{$spt-offset-y-p+"%"};
+	background-size: #{$spt-width-total+"%"};
+
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  // @include sprite-width($sprite);
+  // @include sprite-height($sprite);
+  width: 2em;
+  font-size: 1rem;
+  display: inline-block;
+  height: auto;
+
+  &:before {
+  	content: "";
+  	padding-top: 100%;
+  	display: block;
+  }
+}
+
+@include sprites($spritesheet-sprites);

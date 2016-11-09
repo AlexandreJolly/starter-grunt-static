@@ -1,0 +1,90 @@
+// base
+
+	.hidden {
+		display: none;
+	}
+
+	.v-hidden {
+		visibility: hidden;
+		opacity: 0;
+	}
+
+	.txt-l {
+		text-align: left;
+	}
+
+	.txt-r {
+		text-align: right;
+	}
+
+	.txt-c {
+		text-align: center;
+	}
+
+	.txt-success {
+		color: $green;
+	}
+
+	.txt-error {
+		color: $red;
+	}
+
+	.lighter {
+		font-weight: lighter;
+	}
+
+	.lighter strong,
+	.lighter b {
+		font-weight: normal;
+	}
+
+	.regular {
+		font-weight: normal;
+	}
+
+	.bold {
+		font-weight: bold;
+	}
+
+	.strong {
+		@include fontBold;
+	}
+
+	.bigger {
+		font-size: 1.4em !important;
+		// vertical-align: inherit;
+	}
+
+	.big {
+		font-size: 1.2em !important;
+		// vertical-align: inherit;
+	}
+
+	.small {
+		font-size: 0.8em !important;
+		// vertical-align: inherit;
+	}
+
+	.smaller {
+		font-size: 0.7em !important;
+		// vertical-align: inherit;
+	}
+
+	.block {
+		width: 100%;
+		display: block;
+	}
+
+	.pow {
+		font-size: 0.6em;
+		vertical-align: top;
+		margin: 0 0.2em;
+	}
+
+	.uppercase {
+		text-transform: uppercase;
+	}
+
+	.no-uppercase {
+		text-transform: none;
+	}

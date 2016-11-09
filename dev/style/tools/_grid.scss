@@ -1,0 +1,42 @@
+
+// Sass mixins for *unequal* columns grid container
+// example : .grid-perso { @include uneven-grid(2, 1); }
+@mixin uneven-grid($left:$left, $right:$right, $gutter:$gutter) {
+	& > *:nth-child(odd) {
+		$size: ($left / ($left + $right)) * 100%;
+		width: calc(#{$size} - #{$gutter});
+	}
+	& > *:nth-child(even) {
+		$size: ($right / ($left + $right)) * 100%;
+		width: calc(#{$size} - #{$gutter});
+	}
+}
+
+@mixin flex-container () {
+	display : flex;
+	flex-wrap: wrap;
+}
+
+@mixin flex-container-vc () {
+	align-items: center;
+}
+
+@mixin flex-width-item () {
+	flex: 1;
+}
+
+/* table layout */
+@mixin row () {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+
+  & > * {
+  	@include col;
+  }
+}
+
+@mixin col () {
+  display: table-cell;
+  vertical-align: top;
+}
